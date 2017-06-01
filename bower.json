@@ -1,0 +1,21 @@
+{
+  "name": "griddle",
+  "description": "Else London's next level grid framework",
+  "main": "gruntfile.js",
+  "authors": [
+    "ELSE London | Joe Tuson"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}

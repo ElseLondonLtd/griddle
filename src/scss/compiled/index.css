@@ -1,0 +1,93 @@
+/* line 1, ../index.scss */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+/* line 5, ../index.scss */
+html *, body * {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-font-smoothing: antialiased;
+  outline: 0 !important;
+}
+
+/* line 1, ../base.scss */
+html {
+  font-size: 18px;
+  line-height: 32px;
+}
+
+/* line 6, ../base.scss */
+body {
+  background-color: #eee;
+}
+
+/* line 10, ../base.scss */
+.container {
+  position: relative;
+  display: block;
+  background-color: white;
+  width: 768px;
+  height: 100vh;
+  margin: auto;
+}
+
+/* line 11, ../grid.scss */
+.layout-is-visible .container::before,
+.grid-is-visible .container::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  z-index: 1000;
+  pointer-events: none;
+  min-height: 100vh;
+}
+
+/* line 22, ../grid.scss */
+.layout-is-visible .container::before {
+  margin-right: auto;
+  margin-left: auto;
+  width: calc(100% - (2 * 8px));
+  background-image: repeating-linear-gradient(to bottom, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 16px, transparent 16px, transparent calc(16px + 16px)), repeating-linear-gradient(to right, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) calc((100% / 12) - 16px), transparent calc((100% / 12) - 16px), transparent calc(100% / 12));
+  background-size: calc(100% + 16px) 100%;
+}
+
+/* line 49, ../grid.scss */
+.grid-is-visible .container::after {
+  width: calc(100% - 1px);
+  background-image: repeating-linear-gradient(to right, transparent, transparent calc(8px - 1px), rgba(255, 0, 0, 0.5) 8px, rgba(255, 0, 0, 0.5) 8px), repeating-linear-gradient(to bottom, transparent, transparent calc(8px - 1px), rgba(255, 0, 0, 0.5) 8px, rgba(255, 0, 0, 0.5) 8px);
+  background-size: calc(100% + 16px) 100%;
+}
+
+/* line 73, ../grid.scss */
+.grid-layout-control {
+  position: fixed;
+  display: block;
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+
+/* line 79, ../grid.scss */
+.button {
+  position: relative;
+  display: block;
+  color: white;
+  border: 0;
+  outline: 0;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 8px 16px;
+  margin: 8px;
+  background-color: black;
+}
+/* line 90, ../grid.scss */
+.button.button--active.button--pink {
+  background: #f09;
+}
+/* line 93, ../grid.scss */
+.button.button--active.button--blue {
+  background: #0096ff;
+}

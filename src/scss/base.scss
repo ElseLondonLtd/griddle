@@ -1,0 +1,16 @@
+html {
+    font-size: 18px;
+    line-height: 32px;
+}
+
+body {
+    background-color: #eee;
+}
+
+.container {
+    @include prdb;
+    background-color: white;
+    width: 768px;
+    height: 100vh;
+    margin: auto;
+}
