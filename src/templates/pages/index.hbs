@@ -2,11 +2,29 @@
 title: Griddle
 ---
 
-<div class="grid-layout-control">
-    <button class="button button--pink grid-toggle-button" id="grid-toggle-button">GRID</button>
-    <button class="button button--blue layout-toggle-button" id="layout-toggle-button">LAYOUT</button>
-</div>
+<header class="header">
+    <div class="container">
 
-<div class="container">
+        <h1 class="header__title">Griddle</h1>
 
-</div>
+        <div class="header__toolbar">
+            <button class="button button--pink grid-toggle-button" id="grid-toggle-button">GRID</button>
+            <button class="button button--blue layout-toggle-button" id="layout-toggle-button">LAYOUT</button>
+            <button class="button button--green metrics-toggle-button" id="metrics-toggle-button">METRICS</button>
+        </div>
+
+        <div class="header__metrics">
+            <p>Page width: <span class="metric-value" id="page-width"></span></p>
+            <p>Container width/max-width: <span class="metric-value" id="container-width"></span></p>
+            <p>Outer margins: <span class="metric-value" id="outer-margins"></span></p>
+            <p>Atoms per column: <span class="metric-value" id="atoms-per-column"></span></p>
+            <p>Column width: <span class="metric-value" id="column-width"></span></p>
+        </div>
+    </div>
+</header>
+
+<div class="grid-overlay">
+    <div class="container grid-overlay__container "></div>
+</div> 
+
+<div class="container content-container" id="content-container"></div>

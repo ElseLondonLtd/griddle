@@ -2,3 +2,7 @@
 // Grid
 $column-row-colour: rgba(255, 0, 0, 0.1);
 $grid-line-colour: rgba(255, 0, 0, 0.5);
+
+$atom: 8px;
+$columns: 12;
+$gutter: $atom*2;

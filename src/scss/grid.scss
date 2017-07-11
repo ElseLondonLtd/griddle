@@ -1,6 +1,6 @@
-$baseline: 8px;
-$columns: 12;
-$gutter: 16px;
+// $atom: 8px;
+// $columns: 12;
+// $gutter: 16px;
 
 $column-repeating-width: calc(100% / #{$columns});
 $column-width: calc((100% / #{$columns}) - #{$gutter});
@@ -8,21 +8,20 @@ $column-background-width: calc(100% + #{$gutter});
 
 $row-height: $gutter;
 
-.layout-is-visible .container::before,
-.grid-is-visible .container::after {
+.layout-is-visible .grid-overlay__container::before,
+.grid-is-visible .grid-overlay__container::after {
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
     content: '';
-    z-index: 1000;
     pointer-events: none;
     min-height: 100vh;
 }
 
-// -- COLUMNS -- //
-.layout-is-visible .container::before {
+// -- COLUMNS & ROWS -- //
+.layout-is-visible .grid-overlay__container::before {
     margin-right: auto;
     margin-left: auto;
-    width: calc(100% - (2 * #{$baseline}));
+    width: calc(100% - (2 * #{$atom}));
 
     background-image:
         // Rows
@@ -43,55 +42,95 @@ $row-height: $gutter;
         );
     background-size: $column-background-width 100%;
 
-}
+} 
 
-// -- ROWS -- //
-.grid-is-visible .container::after {
-    width: calc(100% - 1px);
+// -- GRID LINES -- //
+.grid-is-visible .grid-overlay__container::after {
+    // width: calc(100% - 1px);
+    width: 100%;
+
+    background-image: url(images/grid.png);
+    background-size: $atom $atom;
+    background-position: 0 0;
+    opacity: 0.4;
     
-    background-image:
-        // Vertical baseline
-        repeating-linear-gradient(
-            to right,
-            transparent,
-            transparent calc(#{$baseline} - 1px),
-            $grid-line-colour $baseline,
-            $grid-line-colour $baseline
-        ),
-        // Horizontal baseline
-        repeating-linear-gradient(
-            to bottom,
-            transparent,
-            transparent calc(#{$baseline} - 1px),
-            $grid-line-colour $baseline,
-            $grid-line-colour $baseline
-        );
-    background-size: $column-background-width 100%;
+    // background-image:
+    //     // Vertical grid
+    //     repeating-linear-gradient(
+    //         to right,
+    //         transparent,
+    //         transparent calc(#{$atom} - 1px),
+    //         $grid-line-colour $atom,
+    //         $grid-line-colour $atom
+    //     ),
+    //     // Horizontal grid
+    //     repeating-linear-gradient(
+    //         to bottom,
+    //         transparent,
+    //         transparent calc(#{$atom} - 1px),
+    //         $grid-line-colour $atom,
+    //         $grid-line-colour $atom
+    //     );
+    // background-size: $column-background-width 100%;
 }
 
 
-.grid-layout-control {
-    @include pfdb;
-    top: 0; right: 0;
-    text-align: right;
-}
+// @media screen and (min-width: 384px) {
+//     $atom: 8px;
+//     $gutter: 16px;
 
-.button {
-    @include prdb;
-    color: white;
-    border: 0; outline: 0;
-    font-size: inherit;
-    line-height: inherit;
-    padding: 8px 16px;
-    margin: $baseline;
-    background-color: black;
+//     $column-repeating-width: calc(100% / #{$columns});
+//     $column-width: calc((100% / #{$columns}) - #{$gutter});
+//     $column-background-width: calc(100% + #{$gutter});
 
-    &.button--active {
-        &.button--pink {
-            background: #f09;
-        }
-        &.button--blue {
-            background: #0096ff;
-        }
-    }
-}
+//     $row-height: $gutter;
+
+//     // -- COLUMNS & ROWS -- //
+//     .layout-is-visible .grid-overlay__container::before {
+//         width: calc(100% - (2 * #{$atom}));
+
+//         background-image:
+//             // Rows
+//             repeating-linear-gradient(
+//                 to bottom,
+//                 $column-row-colour,
+//                 $column-row-colour $row-height,
+//                 transparent $row-height,
+//                 transparent calc(#{$row-height} + #{$gutter})
+//             ),
+//             // Columns
+//             repeating-linear-gradient(
+//                 to right,
+//                 $column-row-colour,
+//                 $column-row-colour $column-width,
+//                 transparent $column-width,
+//                 transparent $column-repeating-width
+//             );
+//         background-size: $column-background-width 100%;
+
+//     }
+
+//     // -- GRID LINES -- //
+//     .grid-is-visible .grid-overlay__container::after {
+//         width: calc(100% - 1px);
+        
+//         background-image:
+//             // Vertical grid
+//             repeating-linear-gradient(
+//                 to right,
+//                 transparent,
+//                 transparent calc(#{$atom} - 1px),
+//                 $grid-line-colour $atom,
+//                 $grid-line-colour $atom
+//             ),
+//             // Horizontal grid
+//             repeating-linear-gradient(
+//                 to bottom,
+//                 transparent,
+//                 transparent calc(#{$atom} - 1px),
+//                 $grid-line-colour $atom,
+//                 $grid-line-colour $atom
+//             );
+//         background-size: $column-background-width 100%;
+//     }
+// }

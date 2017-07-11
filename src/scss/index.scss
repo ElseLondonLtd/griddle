@@ -12,6 +12,11 @@ html, body {
 @import '0_variables';
 @import '1_mixins';
 @import '2_placeholders';
+@import '3_typography';
 
 @import 'base';
 @import 'grid';
+
+@import 'partials/header';
+
+@import 'media';

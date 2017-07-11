@@ -1,16 +1,52 @@
-html {
-    font-size: 18px;
-    line-height: 32px;
-}
-
 body {
     background-color: #eee;
+    padding-top: $atom*9;
 }
 
 .container {
     @include prdb;
-    background-color: white;
-    width: 768px;
-    height: 100vh;
     margin: auto;
+}
+
+.grid-overlay {
+    @include pfdb;
+    top: 0; right: 0; bottom: 0; left: 0;
+    height: 100vh;
+    width: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.grid-overlay__container {
+    height: 100%;
+    margin: auto;
+}
+
+.content-container {
+    height: $atom*50;
+    background-color: white;
+}
+
+.button {
+    @include prdib;
+    color: white;
+    border: 0; outline: 0;
+    font-size: inherit;
+    line-height: $atom*3;
+    padding: $atom $atom*2;
+    cursor: pointer;
+    background-color: black;
+
+    &.button--active {
+        &.button--pink {
+            background: #f09;
+        }
+        &.button--blue {
+            background: #0096ff;
+        }
+
+        &.button--green {
+            background: #2fd566;
+        }
+    }
 }

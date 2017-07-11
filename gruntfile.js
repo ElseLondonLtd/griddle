@@ -84,7 +84,7 @@ module.exports = grunt => {
                 tasks: ['compass', 'concat:app_css']
             },
             js: {
-                files: ['!src/js/compiled/**/*.js', 'src/js/**/*.js'],
+                files: ['src/js/*.js', '!src/js/compiled'],
                 tasks: ['babel', 'concat:app_js']
             },
             hbs: {

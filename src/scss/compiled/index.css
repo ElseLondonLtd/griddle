@@ -10,43 +10,109 @@ html *, body * {
   outline: 0 !important;
 }
 
-/* line 1, ../base.scss */
+/* line 1, ../2_placeholders.scss */
+.header, .header__toolbar, .header__metrics {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 1, ../3_typography.scss */
 html {
   font-size: 18px;
   line-height: 32px;
+  font-family: 'Helvetica', Arial, sans-serif;
+}
+
+/* line 7, ../3_typography.scss */
+h1 {
+  font-size: 1.777777rem;
+  line-height: 2.222222rem;
+  margin: 0 0 16px 8px;
+}
+
+/* line 1, ../base.scss */
+body {
+  background-color: #eee;
+  padding-top: 72px;
 }
 
 /* line 6, ../base.scss */
-body {
-  background-color: #eee;
-}
-
-/* line 10, ../base.scss */
 .container {
   position: relative;
   display: block;
-  background-color: white;
-  width: 768px;
-  height: 100vh;
   margin: auto;
 }
 
+/* line 11, ../base.scss */
+.grid-overlay {
+  position: fixed;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* line 20, ../base.scss */
+.grid-overlay__container {
+  height: 100%;
+  margin: auto;
+}
+
+/* line 25, ../base.scss */
+.content-container {
+  height: 400px;
+  background-color: white;
+}
+
+/* line 30, ../base.scss */
+.button {
+  position: relative;
+  display: inline-block;
+  color: white;
+  border: 0;
+  outline: 0;
+  font-size: inherit;
+  line-height: 24px;
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: black;
+}
+/* line 41, ../base.scss */
+.button.button--active.button--pink {
+  background: #f09;
+}
+/* line 44, ../base.scss */
+.button.button--active.button--blue {
+  background: #0096ff;
+}
+/* line 48, ../base.scss */
+.button.button--active.button--green {
+  background: #2fd566;
+}
+
 /* line 11, ../grid.scss */
-.layout-is-visible .container::before,
-.grid-is-visible .container::after {
+.layout-is-visible .grid-overlay__container::before,
+.grid-is-visible .grid-overlay__container::after {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   content: '';
-  z-index: 1000;
   pointer-events: none;
   min-height: 100vh;
 }
 
-/* line 22, ../grid.scss */
-.layout-is-visible .container::before {
+/* line 21, ../grid.scss */
+.layout-is-visible .grid-overlay__container::before {
   margin-right: auto;
   margin-left: auto;
   width: calc(100% - (2 * 8px));
@@ -54,40 +120,212 @@ body {
   background-size: calc(100% + 16px) 100%;
 }
 
-/* line 49, ../grid.scss */
-.grid-is-visible .container::after {
-  width: calc(100% - 1px);
-  background-image: repeating-linear-gradient(to right, transparent, transparent calc(8px - 1px), rgba(255, 0, 0, 0.5) 8px, rgba(255, 0, 0, 0.5) 8px), repeating-linear-gradient(to bottom, transparent, transparent calc(8px - 1px), rgba(255, 0, 0, 0.5) 8px, rgba(255, 0, 0, 0.5) 8px);
-  background-size: calc(100% + 16px) 100%;
+/* line 48, ../grid.scss */
+.grid-is-visible .grid-overlay__container::after {
+  width: 100%;
+  background-image: url(images/grid.png);
+  background-size: 8px 8px;
+  background-position: 0 0;
+  opacity: 0.4;
 }
 
-/* line 73, ../grid.scss */
-.grid-layout-control {
+/* line 1, ../partials/header.scss */
+.header {
   position: fixed;
   display: block;
   top: 0;
   right: 0;
-  text-align: right;
+  bottom: 0;
+  left: 0;
+  height: 56px;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(200, 200, 200, 0.4);
 }
 
-/* line 79, ../grid.scss */
-.button {
+/* line 11, ../partials/header.scss */
+.header__title,
+.header__toolbar {
   position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* line 17, ../partials/header.scss */
+.header__title {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* line 22, ../partials/header.scss */
+.header__toolbar {
+  float: right;
+  text-align: right;
+  padding: 8px;
+}
+
+/* line 29, ../partials/header.scss */
+.header__metrics {
+  position: absolute;
+  display: none;
+  right: 8px;
+  top: 72px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  line-height: 24px;
+  padding: 8px;
+}
+/* line 39, ../partials/header.scss */
+.metrics-is-visible .header__metrics {
   display: block;
-  color: white;
-  border: 0;
-  outline: 0;
-  font-size: inherit;
-  line-height: inherit;
-  padding: 8px 16px;
-  margin: 8px;
-  background-color: black;
 }
-/* line 90, ../grid.scss */
-.button.button--active.button--pink {
-  background: #f09;
+
+/* line 44, ../partials/header.scss */
+.metric-value {
+  font-weight: 600;
 }
-/* line 93, ../grid.scss */
-.button.button--active.button--blue {
-  background: #0096ff;
+
+@media screen and (min-width: 384px) {
+  /* line 2, ../media.scss */
+  .container {
+    width: 384px;
+  }
+}
+@media screen and (min-width: 480px) {
+  /* line 8, ../media.scss */
+  .container {
+    width: 480px;
+  }
+}
+@media screen and (min-width: 576px) {
+  /* line 14, ../media.scss */
+  .container {
+    width: 576px;
+  }
+}
+@media screen and (min-width: 672px) {
+  /* line 20, ../media.scss */
+  .container {
+    width: 672px;
+  }
+}
+@media screen and (min-width: 768px) {
+  /* line 26, ../media.scss */
+  .container {
+    width: 768px;
+  }
+}
+@media screen and (min-width: 864px) {
+  /* line 32, ../media.scss */
+  .container {
+    width: 864px;
+  }
+}
+@media screen and (min-width: 960px) {
+  /* line 38, ../media.scss */
+  .container {
+    width: 960px;
+  }
+}
+@media screen and (min-width: 1056px) {
+  /* line 44, ../media.scss */
+  .container {
+    width: 1056px;
+  }
+}
+@media screen and (min-width: 1152px) {
+  /* line 50, ../media.scss */
+  .container {
+    width: 1152px;
+  }
+}
+@media screen and (min-width: 1248px) {
+  /* line 56, ../media.scss */
+  .container {
+    width: 1248px;
+  }
+}
+@media screen and (min-width: 1344px) {
+  /* line 62, ../media.scss */
+  .container {
+    width: 1344px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  /* line 68, ../media.scss */
+  .container {
+    width: 1440px;
+  }
+}
+@media screen and (min-width: 1536px) {
+  /* line 74, ../media.scss */
+  .container {
+    width: 1536px;
+  }
+}
+@media screen and (min-width: 1632px) {
+  /* line 80, ../media.scss */
+  .container {
+    width: 1632px;
+  }
+}
+@media screen and (min-width: 1728px) {
+  /* line 86, ../media.scss */
+  .container {
+    width: 1728px;
+  }
+}
+@media screen and (min-width: 1824px) {
+  /* line 94, ../media.scss */
+  .container {
+    width: 1824px;
+  }
+}
+@media screen and (min-width: 1920px) {
+  /* line 99, ../media.scss */
+  .container {
+    width: 1920px;
+  }
+}
+@media screen and (min-width: 2016px) {
+  /* line 104, ../media.scss */
+  .container {
+    width: 2016px;
+  }
+}
+@media screen and (min-width: 2112px) {
+  /* line 109, ../media.scss */
+  .container {
+    width: 2112px;
+  }
+}
+@media screen and (min-width: 2208px) {
+  /* line 114, ../media.scss */
+  .container {
+    width: 2208px;
+  }
+}
+@media screen and (min-width: 2304px) {
+  /* line 119, ../media.scss */
+  .container {
+    width: 2304px;
+  }
+}
+@media screen and (min-width: 2400px) {
+  /* line 124, ../media.scss */
+  .container {
+    width: 2400px;
+  }
+}
+@media screen and (min-width: 2496px) {
+  /* line 129, ../media.scss */
+  .container {
+    width: 2496px;
+  }
+}
+@media screen and (min-width: 2592px) {
+  /* line 134, ../media.scss */
+  .container {
+    width: 2592px;
+  }
 }

@@ -1,0 +1,46 @@
+.header {
+    @include pfdb;
+    top: 0; right: 0; bottom: 0; left: 0;
+    @extend %border-box;
+    height: $atom*7;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(200,200,200,0.4);
+}
+
+.header__title,
+.header__toolbar {
+    @include prdib;
+    vertical-align: top;
+}
+
+.header__title {
+    margin-top: $atom;
+    margin-bottom: $atom;
+}
+
+.header__toolbar {
+    float: right;
+    @extend %border-box;
+    text-align: right;
+    padding: $atom;
+}
+
+.header__metrics {
+    @include padn;
+    right: $atom;
+    top: $atom*9;
+    @extend %border-box;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: $atom*2;
+    line-height: $atom*3;
+    padding: $atom;
+
+    .metrics-is-visible & {
+        @include db;
+    }
+}
+
+.metric-value {
+    font-weight: 600;
+}
