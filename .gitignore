@@ -1,4 +1,10 @@
 node_modules
 bower_components
-dist
 .sass-cache
+
+# Ignore dist folder, except images
+# (Don't want to have to duplicate
+# from /src, or recompress every
+# time an image is added/updated).
+dist/*
+!dist/images/
